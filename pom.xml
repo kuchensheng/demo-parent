@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.sxc.dubbo.demo</groupId>
+  <artifactId>demo-parent</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0.0-SNAPSHOT</version>
+  <modules>
+    <module>modules/demo-dubbo-provider</module>
+    <module>modules/demo-dubbo-provider-sdk</module>
+  </modules>
+
+  <name>Maven</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://maven.apache.org/</url>
+  <inceptionYear>2001</inceptionYear>
+
+  <scm>
+    <connection>scm:git:https://github.com/kuchensheng/demo-parent.git</connection>
+    <developerConnection>scm:git:https://github.com/kuchensheng/demo-parent.git</developerConnection>
+    <url>https://github.com/kuchensheng/demo-parent</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>sxc-snapshots</id>
+      <url>http://121.40.208.242:8081/repository/sxc-snapshots/</url>
+    </snapshotRepository>
+    <repository>
+      <id>sxc-release</id>
+      <url>http://121.40.208.242:8081/repository/sxc-release/</url>
+    </repository>
+  </distributionManagement>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-plugin</artifactId>
+        <version>1.9.5</version>
+        <configuration>
+          <connectionType>developerConnection</connectionType>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.5.3</version>
+        <configuration>
+          <releaseProfiles>release</releaseProfiles>
+          <autoVersionSubmodules>true</autoVersionSubmodules>
+          <tagBase>https://github.com/kuchensheng/demo-parent.git</tagBase>
+          <tagNameFormat>@{project.version}</tagNameFormat>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.7.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.20.1</version>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>3.0.0</version>
+      </plugin>
+      <plugin>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.7</version>
+      </plugin>
+      <plugin>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.9</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <configuration>
+          <locales>en,fr</locales>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.8.2</version>
+      </plugin>
+
+      <!-- mybatis自动生成代码 -->
+      <plugin>
+        <groupId>org.mybatis.generator</groupId>
+        <artifactId>mybatis-generator-maven-plugin</artifactId>
+        <version>1.3.5</version>
+        <configuration>
+          <configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
+          <overwrite>true</overwrite>
+          <verbose>true</verbose>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </reporting>
+  <repositories>
+    <repository>
+      <id>nexus-aliyun</id>
+      <name>nexus-aliyun</name>
+      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+    </repository>
+  </repositories>
+</project>
