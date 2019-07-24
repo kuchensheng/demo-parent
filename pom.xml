@@ -126,5 +126,9 @@
       <name>nexus-aliyun</name>
       <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
     </repository>
+    <repository>
+      <id>sxc-nexus</id>
+      <url>http://nexus.songxiaocai.com/repository/sxc-release/</url>
+    </repository>
   </repositories>
 </project>
