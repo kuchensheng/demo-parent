@@ -11,10 +11,7 @@ import java.time.LocalDateTime;
  * @author:Hui CreateDate:2019/7/24 0:10
  * version 1.0
  */
-@Service(version = "${project.version}",
-        application = "${dubbo.application.id}",
-        protocol = "${dubbo.protocol.id}",
-        registry = "${dubbo.registry.id}")
+@Service(version = "2.0")
 public class DemoServiceImpl implements DemoService {
 
     @Override
